@@ -2,6 +2,12 @@
 
 End-to-end customer churn project built around the IBM Telco Customer Churn dataset. The repository contains a reproducible Python training pipeline and an interactive React dashboard that visualises the results.
 
+## Live demo
+
+https://maroof-memon.github.io/customer-churn-prediction/
+
+The site is served from the `gh-pages` branch. Run `npm run build` and publish the contents of `dist` to update it.
+
 ## What is included
 
 - `run_pipeline.py` - loads and cleans the dataset, builds preprocessing pipelines, trains and compares four classifiers, evaluates them on a stratified holdout split, computes SHAP values for XGBoost, and regenerates the dashboard data.
