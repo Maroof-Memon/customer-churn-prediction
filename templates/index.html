@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customer Churn Predictor</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+  <!-- Clean, human-made header -->
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="logo">
+        <h1>Churn Predictor</h1>
+        <span>Flask + Scikit-Learn</span>
+      </div>
+      <nav class="nav-links">
+        <a href="#upload">1. Upload</a>
+        <a href="#train">2. Train</a>
+        <a href="#eval">3. Results</a>
+        <a href="#predict">4. Predict</a>
+        <a href="#features">5. Insights</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- Hero: Simple, direct, no badges -->
+    <section class="hero">
+      <h2>Will your customer leave?</h2>
+      <p>Upload your customer data, train a model, and find out who is at risk of churning before it's too late.</p>
+      <div class="hero-actions">
+        <button class="btn primary" id="btnUseSample" type="button">Use Sample Data (100 rows)</button>
+      </div>
+    </section>
+
+    <!-- 1. Upload -->
+    <section class="section" id="upload">
+      <div class="section-header">
+        <h3>1. Upload Data</h3>
+        <p>Drop a CSV file below. We'll automatically detect your target column and missing values.</p>
+      </div>
+
+      <div class="card">
+        <div class="dropzone" id="dropzone">
+          <span class="dropzone-icon">📁</span>
+          <div class="dropzone-title" id="dropzoneTitle">Drag and drop your CSV here</div>
+          <div class="dropzone-sub">Standard .csv format only</div>
+        </div>
+
+        <div class="upload-actions">
+          <input type="file" id="fileInput" accept=".csv" style="display: none;">
+          <button class="btn secondary" id="btnSelectFile" type="button">Browse Files</button>
+        </div>
+
+        <div id="uploadAlert" class="alert alert-info" style="display: none;"></div>
+
+        <div class="meta-grid">
+          <div class="meta-item">
+            <span class="label">Dataset</span>
+            <span class="value" id="metaFilename">None</span>
+          </div>
+          <div class="meta-item">
+            <span class="label">Rows</span>
+            <span class="value" id="metaRows">0</span>
+          </div>
+          <div class="meta-item">
+            <span class="label">Columns</span>
+            <span class="value" id="metaCols">0</span>
+          </div>
+          <div class="meta-item">
+            <span class="label">Missing Values</span>
+            <span class="value" id="metaMissing">0</span>
+          </div>
+        </div>
+
+        <div class="form-group" style="margin-top: 1rem; max-width: 300px;">
+          <label>Target Column to Predict:</label>
+          <select id="targetColSelect" class="form-control">
+            <option value="Churn">Churn</option>
+          </select>
+        </div>
+
+        <div style="margin-top: 1.5rem;">
+          <h4 style="font-size: 0.9rem; margin-bottom: 0.5rem;">Data Preview</h4>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr id="previewTableHeaders"></tr>
+              </thead>
+              <tbody id="previewTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Train -->
+    <section class="section" id="train">
+      <div class="section-header">
+        <h3>2. Train Models</h3>
+        <p>We train Logistic Regression and Random Forest on an 80/20 train-test split.</p>
+      </div>
+
+      <div class="card">
+        <div class="train-action-row">
+          <div>
+            <h4>Training Pipeline</h4>
+            <p class="subtext">Median imputation, scaling, and one-hot encoding are fitted strictly on the training set to prevent data leakage.</p>
+          </div>
+          <button class="btn primary" id="btnTrain" type="button">⚡ Train Models</button>
+        </div>
+
+        <div id="trainAlert" class="alert alert-success" style="display: none;"></div>
+      </div>
+    </section>
+
+    <!-- 3. Evaluation -->
+    <section class="section" id="eval">
+      <div class="section-header">
+        <h3>3. Model Results</h3>
+        <p>Evaluated on the 20% test set. The highest F1-Score wins.</p>
+      </div>
+
+      <div id="evalEmpty" class="empty-state">
+        <h4>No Models Trained Yet</h4>
+        <p>Click "Train Models" above to see the evaluation metrics.</p>
+      </div>
+
+      <div id="evalContainer" style="display: none;">
+        <div class="eval-grid" id="evalCards"></div>
+
+        <div class="card">
+          <h4 style="font-size: 0.9rem; margin-bottom: 1rem;">Performance Comparison</h4>
+          <div style="position: relative; height: 260px; width: 100%;">
+            <canvas id="evalChart"></canvas>
+          </div>
+          <p class="chart-note">
+            <strong>Note:</strong> Churn is usually a minority class. High accuracy can be misleading if the model just predicts everyone stays. F1-Score is the best metric here because it balances Precision and Recall.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Predict -->
+    <section class="section" id="predict">
+      <div class="section-header">
+        <h3>4. Predict Customer Churn</h3>
+        <p>Enter customer attributes to get a real-time prediction.</p>
+      </div>
+
+      <div id="predictEmpty" class="empty-state">
+        <h4>Prediction Engine Locked</h4>
+        <p>Train the models above to unlock this section.</p>
+      </div>
+
+      <div id="predictFormContainer" class="card" style="display: none;">
+        <div class="predict-header">
+          <h4>Customer Details</h4>
+          <div class="form-group">
+            <label>Model:</label>
+            <select id="predictModelSelect" class="form-control"></select>
+          </div>
+        </div>
+
+        <div class="predict-form-grid" id="predictDynamicInputs"></div>
+
+        <button class="btn primary" id="btnPredict" type="button" style="width: 100%; margin-top: 1rem;">Predict Churn</button>
+
+        <div class="prediction-result" id="predictResult">
+          <div class="pred-title" id="predStatus">Likely to Churn</div>
+          <div class="pred-sub" id="predProb">Probability: 78.4%</div>
+          <div class="meter-bar">
+            <div class="meter-fill" id="probMeterFill"></div>
+          </div>
+          <p id="predNote" class="pred-note"></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Features -->
+    <section class="section" id="features">
+      <div class="section-header">
+        <h3>5. Feature Importance</h3>
+        <p>Which customer traits influence the model the most?</p>
+      </div>
+
+      <div id="featEmpty" class="empty-state">
+        <h4>No Insights Yet</h4>
+        <p>Train the models to see feature importance.</p>
+      </div>
+
+      <div id="featSection" class="card" style="display: none;">
+        <div style="position: relative; height: 260px; width: 100%; margin-bottom: 1rem;">
+          <canvas id="featChart"></canvas>
+        </div>
+        <div class="feat-list" id="featList"></div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>Built with Python, Flask, and Scikit-Learn.</p>
+  </footer>
+
+  <script src="/static/script.js"></script>
+</body>
+</html>

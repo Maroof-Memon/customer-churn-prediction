@@ -1,81 +1,139 @@
-# Customer Churn Prediction
+# Customer Churn Prediction — Flask & Scikit-Learn AI Platform
 
-End-to-end customer churn project built around the IBM Telco Customer Churn dataset. The repository contains a reproducible Python training pipeline and an interactive React dashboard that visualises the results.
+A clean, modern, beginner-friendly machine learning web application that predicts whether a customer is likely to leave (churn from) a company.
 
-## Live demo
+Built using **Python, Flask, Pandas, and Scikit-Learn**, with interactive visualizations powered by **Chart.js**.
 
-https://maroof-memon.github.io/customer-churn-prediction/
+---
 
-The site is served from the `gh-pages` branch. Run `npm run build` and publish the contents of `dist` to update it.
+## 📌 Project Overview
 
-## What is included
+Customer churn occurs when a customer cancels their subscription or stops doing business with a company. This application provides a complete, leak-free machine learning workflow on a **single scrollable page**:
 
-- `run_pipeline.py` - loads and cleans the dataset, builds preprocessing pipelines, trains and compares four classifiers, evaluates them on a stratified holdout split, computes SHAP values for XGBoost, and regenerates the dashboard data.
-- `src/` - React + TypeScript dashboard. It reads `src/pipelineResults.json`, so the charts and tables always match the latest pipeline run.
-- `data/Telco-Customer-Churn.csv` - public IBM Telco sample dataset used by the pipeline.
+- **Section 1: Upload Dataset:** Ingest any customer CSV, inspect rows, columns, and missing values, select the target column (`Churn`), and view a data preview table. Includes a 1-click **Use Sample Dataset** button.
+- **Section 2: Train AI Model:** With a single click, trains two industry-standard classifiers: **Logistic Regression** and **Random Forest**. Preprocessing (median imputation, standard scaling, and one-hot encoding) is fitted **strictly on the 80% training set** to prevent data leakage.
+- **Section 3: Model Evaluation:** Evaluates both models on the isolated 20% test split across **Accuracy, Precision, Recall, and F1-score**, displays confusion matrices, and automatically awards a **★ Best Model (Highest F1-Score)** badge to the winning model.
+- **Section 4: Customer Prediction:** Dynamically generates input fields matching the features of the uploaded dataset, allowing users to enter customer attributes and compute real-time defection probabilities.
+- **Section 5: Feature Importance:** Visualizes a simple horizontal bar chart showing which customer characteristics (e.g. Month-to-month contracts, low tenure, high monthly fees) have the greatest influence on churn.
 
-## Dataset
+---
 
-The IBM Telco Customer Churn dataset contains 7,043 customers and 21 columns (19 predictors plus the customer ID and churn label).
+## 📁 Project Structure
 
-Source: https://github.com/IBM/telco-customer-churn-on-icp4d
+```
+.
+├── app.py                     # Python Flask backend & Scikit-Learn training/inference pipeline
+├── sample_churn_data.csv      # Bundled 100-row realistic customer churn dataset
+├── requirements.txt           # Python dependencies (Flask, Pandas, Scikit-learn, Joblib)
+├── templates/
+│   └── index.html             # Clean single-page HTML layout with 5 scrollable sections
+├── static/
+│   ├── style.css              # Dark theme CSS with responsive cards and meter bars
+│   └── script.js              # Vanilla JavaScript for API calls, dynamic forms, and Chart.js
+└── README.md                  # Installation, running guide, and interview explanations
+```
 
-## Run the training pipeline
+---
 
-Requires Python 3.10+.
+## 🚀 Step-by-Step Local Setup & Run Guide
 
-```powershell
-python -m venv .venv
-.venv\Scripts\Activate.ps1
+Follow these steps to run the application on your computer using a standard Python virtual environment.
+
+### Prerequisites
+Make sure you have **Python 3.10 or higher** installed. Check in your terminal:
+```bash
+python --version
+```
+*(On macOS/Linux, you may need to use `python3`).*
+
+---
+
+### Step 1: Open Terminal in Project Folder
+Open your terminal (PowerShell, Command Prompt, or Terminal) and navigate to the project directory:
+```bash
+cd /path/to/Customer-Churn-Prediction
+```
+
+---
+
+### Step 2: Create a Python Virtual Environment
+Creating a virtual environment keeps your project dependencies isolated.
+
+- **On Windows (PowerShell):**
+  ```powershell
+  python -m venv venv
+  Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+  .\venv\Scripts\Activate.ps1
+  ```
+
+- **On Windows (Command Prompt):**
+  ```cmd
+  python -m venv venv
+  venv\Scripts\activate.bat
+  ```
+
+- **On macOS / Linux:**
+  ```bash
+  python3 -m venv venv
+  source venv/bin/activate
+  ```
+
+*(When activated, `(venv)` will appear at the start of your terminal line).*
+
+---
+
+### Step 3: Install Required Dependencies
+Upgrade `pip` and install the required packages listed in `requirements.txt`:
+```bash
+pip install --upgrade pip
 pip install -r requirements.txt
-python run_pipeline.py
 ```
 
-The script prints a model comparison and writes:
+---
 
-- `src/pipelineResults.json` - data used by the dashboard
-- `churn_model_pipeline.joblib` - fitted champion pipeline (not committed)
-
-## Run the dashboard
-
-Requires Node.js 20+.
-
+### Step 4: Run the Flask Web Application
+Start the Flask development server:
 ```bash
-npm install
-npm run dev
+python app.py
 ```
 
-Open http://localhost:3000. To create a production build:
-
-```bash
-npm run build
+You will see:
+```text
+============================================================
+ Customer Churn Prediction — Flask Server Starting
+ Open in browser: http://localhost:5000
+============================================================
+ * Running on http://127.0.0.1:5000
 ```
 
-## Model comparison
+---
 
-Held-out test set: 1,409 customers (20% stratified split).
+### Step 5: Open in Your Browser
+Open your favorite web browser and go to:
+```
+http://localhost:5000
+```
 
-| Model | 5-fold CV ROC-AUC | Test ROC-AUC | Accuracy | F1 |
-| --- | --- | --- | --- | --- |
-| XGBoost | 0.847 | 0.845 | 0.806 | 0.592 |
-| Random Forest | 0.846 | 0.843 | 0.754 | 0.634 |
-| Logistic Regression | 0.846 | 0.841 | 0.742 | 0.617 |
-| Decision Tree | 0.824 | 0.831 | 0.735 | 0.618 |
+1. Click **"Use Sample Dataset (100 Rows)"** to inspect the data preview.
+2. Scroll to Section 2 and click **"Train Models"**.
+3. View the evaluation comparison in Section 3 and the winning model badge.
+4. In Section 4, adjust customer details (e.g. set tenure to 1 month and contract to Month-to-month) and click **"Predict Customer Churn"** to see live predictions.
+5. In Section 5, explore the top features driving churn decisions.
 
-XGBoost is selected as the champion model by test ROC-AUC. The dashboard also includes:
+---
 
-- exploratory statistics and contract-level churn rates
-- preprocessing specification
-- ROC curves and confusion matrices for every model
-- mean absolute SHAP values for the top five churn drivers
-- a live risk estimator
+## 💡 How to Explain This Project in an AI Engineer Interview
 
-## Notes
+When discussing this project in an interview, highlight these key engineering decisions:
 
-- The live risk estimator is a simplified scoring model for interactive what-if analysis. The trained pipeline and all reported metrics come from `run_pipeline.py`.
-- SHAP values are computed with `shap.TreeExplainer` on the fitted XGBoost model.
-- Rerun `python run_pipeline.py` after changing the dataset or model settings to refresh `src/pipelineResults.json`.
+1. **Data Leakage Prevention:**
+   > *"A common mistake is scaling or imputing data on the entire dataset before splitting. In this project, I used Scikit-Learn's `ColumnTransformer` inside an isolated training step: the median imputer, standard scaler, and one-hot encoder are strictly fitted on the 80% training split. The 20% test split is transformed using the training parameters, ensuring realistic evaluation."*
 
-## Stack
+2. **Why F1-Score Decides the Best Model:**
+   > *"In customer churn datasets, the churn class is usually the minority. High accuracy can be deceiving: a trivial model predicting everyone stays might achieve 80% accuracy while failing completely at catching churners. F1-score is the harmonic mean of Precision and Recall, balancing false alarms against missed churners."*
 
-Python, Pandas, NumPy, Scikit-Learn, XGBoost, SHAP, React, TypeScript, Vite, Tailwind CSS, Recharts.
+3. **Model Comparison (Linear vs Non-Linear):**
+   > *"I trained Logistic Regression as an interpretable linear baseline and Random Forest to capture non-linear feature interactions (such as the compounding risk of high monthly charges combined with short tenure and no tech support)."*
+
+4. **Dynamic Preprocessing Schema:**
+   > *"The application dynamically categorizes uploaded columns into numeric vs categorical types, automatically discards identifier keys (like `customerID`), and dynamically generates input form fields so users can score customers on any valid tabular churn dataset."*

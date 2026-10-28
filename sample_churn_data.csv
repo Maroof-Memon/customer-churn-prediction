@@ -1,0 +1,101 @@
+customerID,tenure,Contract,InternetService,TechSupport,PaperlessBilling,PaymentMethod,MonthlyCharges,TotalCharges,Churn
+CUST-001,1,Month-to-month,Fiber optic,No,Yes,Electronic check,85.50,85.50,Yes
+CUST-002,65,Two year,DSL,Yes,No,Credit card,65.20,4238.00,No
+CUST-003,3,Month-to-month,Fiber optic,No,Yes,Electronic check,99.80,299.40,Yes
+CUST-004,48,Two year,No,No,No,Bank transfer,19.85,952.80,No
+CUST-005,12,One year,DSL,Yes,No,Mailed check,50.10,601.20,No
+CUST-006,5,Month-to-month,Fiber optic,No,Yes,Electronic check,104.25,521.25,Yes
+CUST-007,36,One year,Fiber optic,No,Yes,Credit card,79.05,2845.80,No
+CUST-008,2,Month-to-month,DSL,No,Yes,Electronic check,24.90,49.80,Yes
+CUST-009,72,Two year,Fiber optic,Yes,No,Bank transfer,115.50,8316.00,No
+CUST-010,18,Month-to-month,DSL,No,Yes,Mailed check,45.30,815.40,Yes
+CUST-011,4,Month-to-month,Fiber optic,No,Yes,Electronic check,70.50,282.00,Yes
+CUST-012,55,One year,Fiber optic,Yes,Yes,Bank transfer,108.10,5945.50,No
+CUST-013,9,Month-to-month,DSL,No,No,Mailed check,44.15,397.35,Yes
+CUST-014,24,One year,No,No,No,Mailed check,25.00,600.00,No
+CUST-015,1,Month-to-month,DSL,No,Yes,Electronic check,29.80,29.80,Yes
+CUST-016,68,Two year,DSL,Yes,No,Credit card,58.40,3971.20,No
+CUST-017,8,Month-to-month,Fiber optic,No,Yes,Electronic check,91.20,729.60,Yes
+CUST-018,40,One year,DSL,Yes,Yes,Bank transfer,62.30,2492.00,No
+CUST-019,2,Month-to-month,Fiber optic,No,Yes,Electronic check,88.75,177.50,Yes
+CUST-020,52,Two year,No,No,No,Credit card,20.15,1047.80,No
+CUST-021,15,Month-to-month,DSL,No,Yes,Electronic check,55.00,825.00,No
+CUST-022,6,Month-to-month,Fiber optic,No,Yes,Electronic check,95.40,572.40,Yes
+CUST-023,30,One year,DSL,Yes,No,Mailed check,48.50,1455.00,No
+CUST-024,70,Two year,Fiber optic,Yes,Yes,Credit card,110.20,7714.00,No
+CUST-025,3,Month-to-month,Fiber optic,No,Yes,Electronic check,92.10,276.30,Yes
+CUST-026,45,Two year,DSL,Yes,No,Bank transfer,64.00,2880.00,No
+CUST-027,11,Month-to-month,DSL,No,Yes,Electronic check,52.30,575.30,No
+CUST-028,2,Month-to-month,Fiber optic,No,Yes,Electronic check,80.15,160.30,Yes
+CUST-029,60,Two year,Fiber optic,Yes,No,Credit card,105.00,6300.00,No
+CUST-030,14,Month-to-month,DSL,No,Yes,Mailed check,42.00,588.00,No
+CUST-031,7,Month-to-month,Fiber optic,No,Yes,Electronic check,98.60,690.20,Yes
+CUST-032,50,One year,DSL,Yes,No,Bank transfer,59.80,2990.00,No
+CUST-033,1,Month-to-month,Fiber optic,No,Yes,Electronic check,75.20,75.20,Yes
+CUST-034,62,Two year,No,No,No,Credit card,19.90,1233.80,No
+CUST-035,20,One year,Fiber optic,Yes,Yes,Bank transfer,84.50,1690.00,No
+CUST-036,4,Month-to-month,DSL,No,Yes,Electronic check,39.90,159.60,Yes
+CUST-037,71,Two year,Fiber optic,Yes,No,Credit card,112.50,7987.50,No
+CUST-038,16,Month-to-month,DSL,No,Yes,Mailed check,46.20,739.20,No
+CUST-039,5,Month-to-month,Fiber optic,No,Yes,Electronic check,93.40,467.00,Yes
+CUST-040,42,One year,DSL,Yes,No,Bank transfer,61.00,2562.00,No
+CUST-041,2,Month-to-month,Fiber optic,No,Yes,Electronic check,86.00,172.00,Yes
+CUST-042,58,Two year,No,No,No,Credit card,20.40,1183.20,No
+CUST-043,22,One year,Fiber optic,Yes,Yes,Electronic check,89.50,1969.00,No
+CUST-044,6,Month-to-month,DSL,No,Yes,Electronic check,35.20,211.20,Yes
+CUST-045,66,Two year,Fiber optic,Yes,No,Bank transfer,114.00,7524.00,No
+CUST-046,13,Month-to-month,DSL,No,Yes,Mailed check,47.80,621.40,No
+CUST-047,3,Month-to-month,Fiber optic,No,Yes,Electronic check,101.50,304.50,Yes
+CUST-048,46,Two year,DSL,Yes,No,Credit card,63.50,2921.00,No
+CUST-049,1,Month-to-month,Fiber optic,No,Yes,Electronic check,79.80,79.80,Yes
+CUST-050,64,Two year,No,No,No,Bank transfer,19.50,1248.00,No
+CUST-051,19,One year,Fiber optic,Yes,Yes,Electronic check,87.20,1656.80,No
+CUST-052,4,Month-to-month,DSL,No,Yes,Electronic check,38.40,153.60,Yes
+CUST-053,69,Two year,Fiber optic,Yes,No,Credit card,111.00,7659.00,No
+CUST-054,17,Month-to-month,DSL,No,Yes,Mailed check,45.90,780.30,No
+CUST-055,5,Month-to-month,Fiber optic,No,Yes,Electronic check,94.80,474.00,Yes
+CUST-056,44,One year,DSL,Yes,No,Bank transfer,60.50,2662.00,No
+CUST-057,2,Month-to-month,Fiber optic,No,Yes,Electronic check,84.90,169.80,Yes
+CUST-058,56,Two year,No,No,No,Credit card,20.20,1131.20,No
+CUST-059,25,One year,Fiber optic,Yes,Yes,Bank transfer,90.10,2252.50,No
+CUST-060,7,Month-to-month,DSL,No,Yes,Electronic check,34.80,243.60,Yes
+CUST-061,67,Two year,Fiber optic,Yes,No,Bank transfer,113.50,7604.50,No
+CUST-062,10,Month-to-month,DSL,No,Yes,Mailed check,46.70,467.00,No
+CUST-063,3,Month-to-month,Fiber optic,No,Yes,Electronic check,102.30,306.90,Yes
+CUST-064,49,Two year,DSL,Yes,No,Credit card,64.80,3175.20,No
+CUST-065,1,Month-to-month,Fiber optic,No,Yes,Electronic check,81.40,81.40,Yes
+CUST-066,63,Two year,No,No,No,Bank transfer,19.70,1241.10,No
+CUST-067,21,One year,Fiber optic,Yes,Yes,Credit card,88.90,1866.90,No
+CUST-068,5,Month-to-month,DSL,No,Yes,Electronic check,37.10,185.50,Yes
+CUST-069,72,Two year,Fiber optic,Yes,No,Credit card,115.00,8280.00,No
+CUST-070,15,Month-to-month,DSL,No,Yes,Mailed check,44.50,667.50,No
+CUST-071,4,Month-to-month,Fiber optic,No,Yes,Electronic check,96.30,385.20,Yes
+CUST-072,43,One year,DSL,Yes,No,Bank transfer,61.50,2644.50,No
+CUST-073,2,Month-to-month,Fiber optic,No,Yes,Electronic check,83.70,167.40,Yes
+CUST-074,54,Two year,No,No,No,Credit card,20.50,1107.00,No
+CUST-075,26,One year,Fiber optic,Yes,Yes,Electronic check,91.80,2386.80,No
+CUST-076,8,Month-to-month,DSL,No,Yes,Electronic check,36.50,292.00,Yes
+CUST-077,65,Two year,Fiber optic,Yes,No,Bank transfer,112.80,7332.00,No
+CUST-078,12,Month-to-month,DSL,No,Yes,Mailed check,47.20,566.40,No
+CUST-079,3,Month-to-month,Fiber optic,No,Yes,Electronic check,99.10,297.30,Yes
+CUST-080,51,Two year,DSL,Yes,No,Credit card,66.00,3366.00,No
+CUST-081,1,Month-to-month,Fiber optic,No,Yes,Electronic check,82.90,82.90,Yes
+CUST-082,61,Two year,No,No,No,Bank transfer,19.60,1195.60,No
+CUST-083,23,One year,Fiber optic,Yes,Yes,Credit card,89.00,2047.00,No
+CUST-084,6,Month-to-month,DSL,No,Yes,Electronic check,39.20,235.20,Yes
+CUST-085,70,Two year,Fiber optic,Yes,No,Bank transfer,114.50,8015.00,No
+CUST-086,18,Month-to-month,DSL,No,Yes,Mailed check,45.00,810.00,No
+CUST-087,5,Month-to-month,Fiber optic,No,Yes,Electronic check,97.50,487.50,Yes
+CUST-088,41,One year,DSL,Yes,No,Bank transfer,62.00,2542.00,No
+CUST-089,2,Month-to-month,Fiber optic,No,Yes,Electronic check,85.10,170.20,Yes
+CUST-090,57,Two year,No,No,No,Credit card,20.30,1157.10,No
+CUST-091,27,One year,Fiber optic,Yes,Yes,Electronic check,92.50,2497.50,No
+CUST-092,7,Month-to-month,DSL,No,Yes,Electronic check,35.90,251.30,Yes
+CUST-093,68,Two year,Fiber optic,Yes,No,Bank transfer,113.00,7684.00,No
+CUST-094,14,Month-to-month,DSL,No,Yes,Mailed check,48.00,672.00,No
+CUST-095,4,Month-to-month,Fiber optic,No,Yes,Electronic check,100.80,403.20,Yes
+CUST-096,47,Two year,DSL,Yes,No,Credit card,65.50,3078.50,No
+CUST-097,1,Month-to-month,Fiber optic,No,Yes,Electronic check,80.50,80.50,Yes
+CUST-098,59,Two year,No,No,No,Bank transfer,19.40,1144.60,No
+CUST-099,28,One year,Fiber optic,Yes,Yes,Credit card,90.50,2534.00,No
+CUST-100,5,Month-to-month,DSL,No,Yes,Electronic check,38.00,190.00,Yes
